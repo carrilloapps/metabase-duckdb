@@ -1,0 +1,53 @@
+services:
+  metabase:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    platform: linux/amd64
+    ports:
+      - '3000:3000'
+    volumes:
+      - '/dev/urandom:/dev/random:ro'
+    environment:
+      #- SERVICE_FQDN_METABASE_3000
+      - MB_DB_TYPE=postgres
+      - MB_DB_HOST=postgresql
+      - MB_DB_PORT=5432
+      - 'MB_DB_DBNAME=${POSTGRESQL_DATABASE:-metabase}'
+      - MB_DB_USER=${SERVICE_USER_POSTGRESQL:-metabase_user}
+      - MB_DB_PASS=${SERVICE_PASSWORD_POSTGRESQL:-tu_contraseña_segura}
+    mem_limit: 1g
+    mem_reservation: 512m
+    healthcheck:
+      test: 'curl --fail -I http://127.0.0.1:3000/api/health || exit 1'
+      interval: 5s
+      timeout: 20s
+      retries: 10
+    depends_on:
+      postgresql:
+        condition: service_healthy
+
+  postgresql:
+    image: 'postgres:16-alpine'
+    platform: linux/amd64
+    ports:
+      - '5432:5432'
+    volumes:
+      - 'postgresql-data:/var/lib/postgresql/data'
+    environment:
+      - 'POSTGRES_USER=${SERVICE_USER_POSTGRESQL:-metabase_user}'
+      - 'POSTGRES_PASSWORD=${SERVICE_PASSWORD_POSTGRESQL:-tu_contraseña_segura}'
+      - 'POSTGRES_DB=${POSTGRESQL_DATABASE:-metabase}'
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - 'pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}'
+      interval: 5s
+      timeout: 20s
+      retries: 10
+
+volumes:
+  postgresql-data:
+    name: metabase-postgresql-data
+  metabase-data:
+    name: metabase-app-data
