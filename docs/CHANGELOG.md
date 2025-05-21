@@ -16,6 +16,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic documentation including README, CONTRIBUTING, CODE_OF_CONDUCT, and LICENSE
 - GitHub Actions workflows for CI/CD and publishing to GHCR
 
+### Changed
+- Consolidated GitHub Actions workflows (`docker-build-push.yml` and `publish.yml`) into a single optimized workflow
+- Improved Docker image tagging strategy with support for both `main` and `release` branches
+- Updated Docker build actions to use the latest versions
+
 ### Security
 - Set up secure default configuration
 - Configured healthchecks for service monitoring
