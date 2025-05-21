@@ -16,7 +16,7 @@ This document provides solutions for common issues you might encounter when usin
    
    **Solution**: Ensure your Docker host has enough free memory. You can limit Metabase's memory usage using the `-m` option:
    ```bash
-   docker run -d -p 3000:3000 -m 1G ghcr.io/yourusername/metabase-duckdb:latest
+   docker run -d -p 3000:3000 -m 1G ghcr.io/carrilloapps/metabase-duckdb:latest
    ```
 
 2. **Port Conflict**
@@ -25,7 +25,7 @@ This document provides solutions for common issues you might encounter when usin
    
    **Solution**: Map to a different port:
    ```bash
-   docker run -d -p 8080:3000 ghcr.io/yourusername/metabase-duckdb:latest
+   docker run -d -p 8080:3000 ghcr.io/carrilloapps/metabase-duckdb:latest
    ```
 
 3. **Permission Issues**
@@ -47,7 +47,7 @@ This document provides solutions for common issues you might encounter when usin
    
    **Solution**: Ensure you're providing the correct path to the DuckDB file and that it's accessible to the container. For files on the host, you need to mount them:
    ```bash
-   docker run -d -p 3000:3000 -v /path/to/your/data:/data ghcr.io/yourusername/metabase-duckdb:latest
+   docker run -d -p 3000:3000 -v /path/to/your/data:/data ghcr.io/carrilloapps/metabase-duckdb:latest
    ```
    
    Then in Metabase, use `/data/your-file.duckdb` as the connection path.
@@ -82,7 +82,7 @@ This document provides solutions for common issues you might encounter when usin
      -e MB_DB_DBNAME=metabase \
      -e MB_DB_USER=metabase_user \
      -e MB_DB_PASS=your_secure_password \
-     ghcr.io/yourusername/metabase-duckdb:latest
+     ghcr.io/carrilloapps/metabase-duckdb:latest
    ```
 
 2. **Network Issues**
@@ -101,7 +101,7 @@ This document provides solutions for common issues you might encounter when usin
    
    **Solution**: Allocate more resources to the container:
    ```bash
-   docker run -d -p 3000:3000 --memory=2g --cpus=2 ghcr.io/yourusername/metabase-duckdb:latest
+   docker run -d -p 3000:3000 --memory=2g --cpus=2 ghcr.io/carrilloapps/metabase-duckdb:latest
    ```
 
 2. **Large Datasets**
@@ -122,14 +122,14 @@ This document provides solutions for common issues you might encounter when usin
    
    **Solution**: Increase the memory limit and add swap:
    ```bash
-   docker run -d -p 3000:3000 --memory=2g --memory-swap=4g ghcr.io/yourusername/metabase-duckdb:latest
+   docker run -d -p 3000:3000 --memory=2g --memory-swap=4g ghcr.io/carrilloapps/metabase-duckdb:latest
    ```
 
 2. **Java Heap Issues**
    
    **Solution**: Adjust Java heap settings:
    ```bash
-   docker run -d -p 3000:3000 -e MB_JAVA_OPTS="-Xmx1g" ghcr.io/yourusername/metabase-duckdb:latest
+   docker run -d -p 3000:3000 -e MB_JAVA_OPTS="-Xmx1g" ghcr.io/carrilloapps/metabase-duckdb:latest
    ```
 
 ## Still Having Issues?

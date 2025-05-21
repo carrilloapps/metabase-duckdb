@@ -53,7 +53,7 @@ This creates a temporary in-memory database. Data will be lost when Metabase res
 To use a file-based database, you need to mount the file or directory into the container:
 
 ```bash
-docker run -d -p 3000:3000 -v /local/path/to/data:/data ghcr.io/yourusername/metabase-duckdb:latest
+docker run -d -p 3000:3000 -v /local/path/to/data:/data ghcr.io/carrilloapps/metabase-duckdb:latest
 ```
 
 Then use `/data/database.duckdb` as the connection string.

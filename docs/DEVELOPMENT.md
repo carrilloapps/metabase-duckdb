@@ -15,7 +15,7 @@ This guide provides instructions for developers who want to contribute to the Me
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/metabase-duckdb.git
+   git clone https://github.com/carrilloapps/metabase-duckdb.git
    cd metabase-duckdb
    ```
 
@@ -92,7 +92,7 @@ For broader compatibility, you can build the image for multiple architectures us
 
 ```bash
 docker buildx create --name mybuilder --use
-docker buildx build --platform linux/amd64,linux/arm64 -t yourusername/metabase-duckdb:latest --push .
+docker buildx build --platform linux/amd64,linux/arm64 -t carrilloapps/metabase-duckdb:latest --push .
 ```
 
 ## Debugging

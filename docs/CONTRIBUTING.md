@@ -45,7 +45,7 @@ To set up a local development environment:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/metabase-duckdb.git
+   git clone https://github.com/carrilloapps/metabase-duckdb.git
    cd metabase-duckdb
    ```
 

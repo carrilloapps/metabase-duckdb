@@ -12,13 +12,13 @@ This document explains how to pull and run the Metabase-DuckDB image from GitHub
 To pull the latest version of the Metabase-DuckDB image:
 
 ```bash
-docker pull ghcr.io/yourusername/metabase-duckdb:latest
+docker pull ghcr.io/carrilloapps/metabase-duckdb:latest
 ```
 
 You can also pull a specific version:
 
 ```bash
-docker pull ghcr.io/yourusername/metabase-duckdb:v1.0.0
+docker pull ghcr.io/carrilloapps/metabase-duckdb:v1.0.0
 ```
 
 ## Running the Container
@@ -28,7 +28,7 @@ docker pull ghcr.io/yourusername/metabase-duckdb:v1.0.0
 To run the container with default settings:
 
 ```bash
-docker run -d -p 3000:3000 --name metabase-duckdb ghcr.io/yourusername/metabase-duckdb:latest
+docker run -d -p 3000:3000 --name metabase-duckdb ghcr.io/carrilloapps/metabase-duckdb:latest
 ```
 
 This will start Metabase on port 3000. You can access it by navigating to `http://localhost:3000` in your web browser.
@@ -44,7 +44,7 @@ docker volume create metabase-data
 # Run with the volume mounted
 docker run -d -p 3000:3000 --name metabase-duckdb \
   -v metabase-data:/metabase-data \
-  ghcr.io/yourusername/metabase-duckdb:latest
+  ghcr.io/carrilloapps/metabase-duckdb:latest
 ```
 
 ### With Docker Compose
@@ -56,7 +56,7 @@ For a more complete setup with PostgreSQL for metadata storage, you can use Dock
 ```yaml
 services:
   metabase:
-    image: ghcr.io/yourusername/metabase-duckdb:latest
+    image: ghcr.io/carrilloapps/metabase-duckdb:latest
     platform: linux/amd64
     ports:
       - '3000:3000'
@@ -122,7 +122,7 @@ docker run -d -p 3000:3000 --name metabase-duckdb \
   -e MB_DB_DBNAME=metabase \
   -e MB_DB_USER=metabase_user \
   -e MB_DB_PASS=your_secure_password \
-  ghcr.io/yourusername/metabase-duckdb:latest
+  ghcr.io/carrilloapps/metabase-duckdb:latest
 ```
 
 ## Troubleshooting

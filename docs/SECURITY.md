@@ -78,7 +78,7 @@ This document outlines security best practices for deploying and using the Metab
 ```yaml
 services:
   metabase:
-    image: ghcr.io/yourusername/metabase-duckdb:latest
+    image: ghcr.io/carrilloapps/metabase-duckdb:latest
     platform: linux/amd64
     restart: unless-stopped
     ports:
